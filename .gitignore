@@ -1,0 +1,17 @@
+*.pyc
+*.p
+*.pt
+*.pth
+tmp*
+.DS_Store
+
+/.ipynb_checkpoints/*
+.vscode/*
+/wandb/*
+.idea/*
+
+/data/*
+/corpus/*
+/outputs/*
+/checkpoints/*
+/experiments/*

@@ -1,0 +1,31 @@
+hydra:
+  searchpath:
+    - file://verl/trainer/config
+
+defaults:
+  - ppo_trainer
+  - _self_
+
+data:
+  max_prompt_length: 1536
+  max_response_length: 2560
+  train_batch_size: 256
+  return_raw_chat: True
+  shuffle: False
+
+actor_rollout_ref:
+  hybrid_engine: True
+  rollout:
+    name: sglang
+    multi_turn:
+      enable: True
+      max_assistant_turns: 5
+      max_parallel_calls: 64
+      max_tool_response_length: 512
+      format: qwen
+
+custom_reward_function:
+  reward_kwargs:
+    model_name: Qwen/Qwen2.5-3B-Instruct
+    base_url: "http://127.0.0.1:8001"
+    reward_rollout_n: 4
